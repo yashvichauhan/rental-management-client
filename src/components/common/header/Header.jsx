@@ -1,10 +1,16 @@
-import React, { useState } from "react"
-import "./header.css"
-import { nav } from "../../data/Data"
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import "./header.css";
+import { nav } from "../../data/Data";
+import { Link } from "react-router-dom";
+import LoginSignupModal from '../../login/loginSignupModal';
+import { useAuth } from '../../../context/AuthContext';
 
 const Header = () => {
-  const [navList, setNavList] = useState(false)
+  const [navList, setNavList] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
+
+  const toggleModal = () => setShowModal(!showModal);
 
   return (
     <>
@@ -26,18 +32,20 @@ const Header = () => {
             <h4>
               <span>2</span> My List
             </h4>
-            <button className='btn1'>
-              <i className='fa fa-sign-out'></i> Sign In
+            <button className='btn1' onClick={isAuthenticated ? logout : toggleModal}>
+              {isAuthenticated ? 'Sign Out' : 'Sign In'}
             </button>
           </div>
-
           <div className='toggle'>
-            <button onClick={() => setNavList(!navList)}>{navList ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}</button>
+            <button onClick={() => setNavList(!navList)}>
+              {navList ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}
+            </button>
           </div>
         </div>
       </header>
+      <LoginSignupModal show={showModal} handleClose={toggleModal} />
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;
