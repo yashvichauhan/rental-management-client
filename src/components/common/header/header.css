@@ -7,17 +7,21 @@ header {
   top: 0;
   z-index: 99999;
 }
+
 header img {
   width: 170px;
 }
+
 header a {
   margin-left: 30px;
   transition: 0.5s;
   font-weight: 500;
 }
+
 header a:hover {
   color: #27ae60;
 }
+
 header span {
   width: auto;
   padding: 0px 6px;
@@ -27,30 +31,47 @@ header span {
   margin-right: 4px;
   font-weight: 400;
 }
+
 header h4 {
   font-weight: 500;
   margin-right: 20px;
 }
+
 header .toggle {
   display: none;
 }
+
+.btn1 {
+  padding: 10px 20px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
 @media screen and (max-width: 768px) {
   header {
     padding: 0;
   }
+
   header img {
     margin-top: 30px;
   }
+
   header .button {
     display: none;
   }
+
   header .nav .flex {
     display: none;
   }
+
   header .toggle {
     display: block;
     margin-top: 20px;
   }
+
   header .small {
     position: absolute;
     top: 10vh;
@@ -59,6 +80,7 @@ header .toggle {
     background-color: #27ae60;
     padding: 20px;
   }
+
   header li a {
     display: inline-block;
     margin-bottom: 20px;
