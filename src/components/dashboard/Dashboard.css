@@ -1,0 +1,134 @@
+/* Set global styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light gray background color */
+}
+
+/* Dashboard container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard widgets layout */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Widget styles */
+.widget {
+    background-color: #f0f5f1; /* Light green background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Widget heading */
+.widget h3 {
+    margin-top: 0;
+    color: #3c763d; /* Dark green text color */
+}
+
+/* Add property form */
+.add-property-form {
+    background-color: #f0f5f1; /* Light green background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Form labels */
+.add-property-form label {
+    margin-bottom: 10px;
+    display: block;
+    color: #3c763d; /* Dark green text color */
+}
+
+/* Form input fields */
+.add-property-form input,
+.add-property-form textarea {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Form buttons */
+.add-property-form button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green button background color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for buttons */
+.add-property-form button:hover {
+    background-color: #218838; /* Darker shade of green on hover */
+}
+
+/* Account management section */
+.account-management {
+    background-color: #f0f5f1; /* Light green background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Account management heading */
+.account-management h3 {
+    margin-top: 0;
+    color: #3c763d; /* Dark green text color */
+}
+
+/* Form styles within account management */
+.account-management form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Adjusted spacing for labels */
+.account-management label {
+    margin-bottom: 10px;
+    color: #3c763d; /* Dark green text color */
+}
+
+/* Adjusted input and textarea styles */
+.account-management input,
+.account-management textarea {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styles for account management */
+.account-management button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green button background color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for buttons */
+.account-management button:hover {
+    background-color: #228f39; /* Darker shade of green on hover */
+}
+
+
