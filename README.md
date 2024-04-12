@@ -40,21 +40,18 @@ A step-by-step series of examples that tell you how to get a development environ
 
    ```
    cd your-repository
-
    ```
 
 3. Install dependencies:
 
    ```
    npm install
-
    ```
 
 4. Run the application:
 
    ```
    npm start
-
    ```
 
 The server will start, and the app should be available at http://localhost:3000.
