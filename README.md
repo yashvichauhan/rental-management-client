@@ -30,25 +30,30 @@ What you need to install the software:
 A step-by-step series of examples that tell you how to get a development environment running:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-username/your-repository.git
 
    ```
+
 2. Navigate to the project directory:
 
-   ```cd your-repository
+   ```
+   cd your-repository
 
    ```
 
 3. Install dependencies:
 
-   ```npm install
+   ```
+   npm install
 
    ```
 
 4. Run the application:
 
-   ```npm start
+   ```
+   npm start
 
    ```
 
@@ -73,7 +78,7 @@ Commit your Changes (git commit -m 'Add some AmazingFeature')
 Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
 License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is free for use
 
 Contact
 Yashar Ghasempour - @ - yghasemp@my.centennialcollege.ca
