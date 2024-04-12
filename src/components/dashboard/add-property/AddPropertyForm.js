@@ -6,32 +6,43 @@ const AddPropertyForm = ({ onAddProperty }) => {
         title: '',
         description: '',
         price: '',
-        location: ''
+        location: '',
+        image: null // Add an image field to your state
     });
 
     const handleChange = e => {
-        const { name, value } = e.target;
-        setProperty(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        const { name, type, value, files } = e.target;
+        if (type === 'file') {
+            // If the changed element is file input, we'll update the image state
+            setProperty(prevState => ({
+                ...prevState,
+                image: files[0] // We're assuming here that the user can only pick one image
+            }));
+        } else {
+            // For other input types, just save the value
+            setProperty(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleSubmit = e => {
         e.preventDefault();
         // Validate form data
-        if (!property.title || !property.description || !property.price || !property.location) {
-            alert('Please fill in all fields.');
+        if (!property.title || !property.description || !property.price || !property.location || !property.image) {
+            alert('Please fill in all fields and select an image.');
             return;
         }
-        // Add property
+        // Add property, you might need to handle the image upload appropriately
         onAddProperty(property);
         // Clear form fields
         setProperty({
             title: '',
             description: '',
             price: '',
-            location: ''
+            location: '',
+            image: null
         });
     };
 
@@ -53,6 +64,10 @@ const AddPropertyForm = ({ onAddProperty }) => {
             <div>
                 <label>Location:</label>
                 <input type="text" name="location" value={property.location} onChange={handleChange} />
+            </div>
+            <div>
+                <label>Image:</label>
+                <input type="file" name="image" onChange={handleChange} />
             </div>
             <button type="submit">Add Property</button>
         </form>

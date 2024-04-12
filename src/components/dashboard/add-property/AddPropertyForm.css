@@ -1,0 +1,62 @@
+.add-property-form {
+    margin-top: 20px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
+    max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-property-form label {
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.add-property-form input[type="text"],
+.add-property-form input[type="number"],
+.add-property-form input[type="email"],
+.add-property-form input[type="file"],
+.add-property-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.add-property-form input[type="file"] {
+    padding: 8px;
+}
+
+.add-property-form button {
+    padding: 15px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.add-property-form button:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    .add-property-form {
+        width: 90%;
+        margin-top: 20px;
+    }
+}

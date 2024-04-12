@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AccountManagement.css';
 
 const AccountManagement = ({ user }) => {
     const [formData, setFormData] = useState({
@@ -7,7 +8,7 @@ const AccountManagement = ({ user }) => {
         password: '',
         newPassword: '',
         confirmPassword: '',
-        notificationPreferences: false // Example checkbox for notification preferences
+        notificationPreferences: false
     });
 
     const handleChange = e => {
@@ -20,12 +21,11 @@ const AccountManagement = ({ user }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // Implement logic to update user's account settings
         console.log('Form data:', formData);
     };
 
     return (
-        <div>
+        <div className="account-management">
             <h3>Account Management</h3>
             <form onSubmit={handleSubmit}>
                 <div>

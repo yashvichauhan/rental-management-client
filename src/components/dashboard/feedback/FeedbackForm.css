@@ -1,0 +1,43 @@
+/* FeedbackForm styles */
+.feedback-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form h3 {
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+}
+
+.feedback-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ccd0d5;
+    border-radius: 5px;
+    min-height: 150px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.feedback-form button {
+    width: 100%;
+    padding: 15px 25px;
+    background-color: #5cb85c;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-form button:hover {
+    background-color: #4cae4c;
+}

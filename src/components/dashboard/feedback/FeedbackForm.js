@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FeedbackForm.css';
 
 const FeedbackForm = ({ onSubmitFeedback }) => {
     const [feedback, setFeedback] = useState('');
@@ -10,7 +11,7 @@ const FeedbackForm = ({ onSubmitFeedback }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='feedback-form'>
             <h3>Submit Feedback</h3>
             <textarea
                 value={feedback}

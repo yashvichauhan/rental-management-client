@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
-import PropertyManagement from './PropertyManagement';
-import ActivityLog from './ActivityLog';
-import FeedbackForm from './FeedbackForm';
-import AccountManagement from './AccountManagement';
+import PropertyManagement from './property-management/PropertyManagement';
+import ActivityLog from './activity-log/ActivityLog';
+import FeedbackForm from './feedback/FeedbackForm';
+import AccountManagement from './account-management/AccountManagement';
+import AddPropertyForm from './add-property/AddPropertyForm';
 import Navbar from './NavBar';
 
 const Dashboard = () => {
@@ -38,15 +39,15 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
-            <h1>Dashboard</h1>
-            {/* Navbar component */}
             <Navbar setActiveTab={setActiveTab} handleAddProperty={handleAddProperty} />
-            <div className="dashboard-widgets">
+            <div className="dashboard-content">
+                <h1>{activeTab.replace(/([A-Z])/g, ' $1').trim()}</h1>
                 {/* Conditionally render components based on activeTab */}
                 {activeTab === 'myListings' && <PropertyManagement properties={properties} onDeleteProperty={handleDeleteProperty} />}
                 {activeTab === 'activityLog' && <ActivityLog activities={activities} />}
                 {activeTab === 'feedback' && <FeedbackForm onSubmitFeedback={handleSubmitFeedback} />}
                 {activeTab === 'accountManagement' && <AccountManagement user={user} />}
+                {activeTab === 'addPropertyForm' && <AddPropertyForm user={user} />}
             </div>
         </div>
     );
