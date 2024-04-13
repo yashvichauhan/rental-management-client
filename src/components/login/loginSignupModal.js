@@ -39,7 +39,6 @@ const LoginSignupModal = ({ show, handleClose }) => {
             const response = await axios.post(url, postData);
             if (response.data.token) {
                 login(response.data.token);
-                // Optionally, redirect the user or update the application state
                 handleClose();
             } else {
                 console.error('No token received');
