@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './AddPropertyForm.css';
+import axios from 'axios';
 
-const AddPropertyForm = () => {
+const AddPropertyForm = ({ user }) => {
     const [property, setProperty] = useState({
         title: '',
         description: '',
@@ -35,21 +36,19 @@ const AddPropertyForm = () => {
         formData.append('image', property.image);
 
         try {
-            const response = await fetch('http://localhost:5000/api/properties', {
-                method: 'POST',
-                body: formData,
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/properties`, formData, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data'
+                }
             });
 
-            const responseBody = await response.json();
-
-            if (!response.ok) {
-                const message = `An error has occurred: ${responseBody.message || response.statusText}`;
-                throw new Error(message);
+            if (response.status === 201) {
+                alert('Property added successfully!');
+            } else {
+                alert('Failed to add property');
             }
-
-            alert('Property added successfully!');
-            console.log('Server Response:', responseBody);
-
         } catch (error) {
             console.error('Failed to add property:', error);
             alert(`Failed to add property: ${error.message}`);

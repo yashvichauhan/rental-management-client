@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './login.css';
-import { useAuth } from '../../context/AuthContext';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
+import { jwtDecode } from 'jwt-decode';
 
 const LoginSignupModal = ({ show, handleClose }) => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -13,6 +15,8 @@ const LoginSignupModal = ({ show, handleClose }) => {
         password: '',
         confirmPassword: ''
     });
+
+    const history = useHistory();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -38,8 +42,15 @@ const LoginSignupModal = ({ show, handleClose }) => {
         try {
             const response = await axios.post(url, postData);
             if (response.data.token) {
+                const userData = jwtDecode(response.data.token);
                 login(response.data.token);
                 handleClose();
+
+                if (userData.role === 'admin') {
+                    history.push('/admin/dashboard');
+                } else {
+                    history.push('/dashboard');
+                }
             } else {
                 console.error('No token received');
             }
@@ -127,7 +138,7 @@ const LoginSignupModal = ({ show, handleClose }) => {
                                     onChange={handleChange}
                                     required
                                 />
-                                <button className="login-modal-button" type="submit" onClick={handleSubmit}>
+                                <button className="login-modal-button" type="submit">
                                     Sign Up
                                 </button>
                             </>

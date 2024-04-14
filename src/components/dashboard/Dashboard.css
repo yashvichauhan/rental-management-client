@@ -8,10 +8,9 @@ body {
 
 .dashboard-container {
     display: flex;
-    flex-start: 220px;
+    margin-left: 220px;
     max-width: calc(100% - 220px);
     margin: 20px auto;
-    margin-left: 220px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;

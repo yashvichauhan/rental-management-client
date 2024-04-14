@@ -25,17 +25,21 @@ const Dashboard = () => {
         const fetchUser = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/user`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                setUser(response.data);
+                if (token) {
+                    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/user`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    console.log(response.data);
+                    setUser(response.data);
+                } else {
+                    console.log('No token found');
+                }
             } catch (error) {
-                console.error("Error fetching user data:", error);
+                console.error("Error fetching user data:", error.response || error);
             }
         };
-
         fetchUser();
     }, []);
 

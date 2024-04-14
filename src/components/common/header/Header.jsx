@@ -2,15 +2,22 @@ import React, { useState } from "react";
 import "./header.css";
 import { nav } from "../../data/Data";
 import { Link } from "react-router-dom";
-import LoginSignupModal from '../../login/loginSignupModal';
+import LoginSignupModal from '../../auth/login/loginSignupModal';
 import { useAuth } from '../../../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 const Header = () => {
   const [navList, setNavList] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { isAuthenticated, logout } = useAuth();
+  const history = useHistory();
 
   const toggleModal = () => setShowModal(!showModal);
+
+  const handleLogout = () => {
+    logout();
+    history.push('/');
+  };
 
   return (
     <>
@@ -30,7 +37,7 @@ const Header = () => {
           </div>
           <div className='button flex'>
             <Link to={isAuthenticated ? '/dashboard' : '/login'} className='btn1'>My Listing</Link>
-            <button className='btn1' onClick={isAuthenticated ? logout : toggleModal}>
+            <button className='btn1' onClick={isAuthenticated ? handleLogout : toggleModal}>
               {isAuthenticated ? 'Sign Out' : 'Sign In'}
             </button>
           </div>

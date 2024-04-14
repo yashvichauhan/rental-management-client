@@ -3,7 +3,7 @@ import './AccountManagement.css';
 
 const AccountManagement = ({ user }) => {
     const [formData, setFormData] = useState({
-        username: user.username,
+        username: user.fullName,
         email: user.email,
         password: '',
         newPassword: '',
@@ -21,7 +21,39 @@ const AccountManagement = ({ user }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('Form data:', formData);
+
+        if (formData.newPassword !== formData.confirmPassword) {
+            alert("New passwords do not match.");
+            return;
+        }
+
+        const updateData = {
+            email: formData.email,
+            newPassword: formData.newPassword,
+        };
+
+        updateAccount(updateData);
+    };
+
+    const updateAccount = async (data) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/update-password`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(data)
+            });
+            const json = await response.json();
+            if (!response.ok) {
+                throw new Error(json.message || 'Failed to update account');
+            }
+            alert('Account updated successfully!');
+        } catch (error) {
+            console.error('Failed to update account:', error);
+            alert(`Failed to update account: ${error.message}`);
+        }
     };
 
     return (

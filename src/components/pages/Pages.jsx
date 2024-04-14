@@ -9,6 +9,8 @@ import Blog from "../blog/Blog"
 import Services from "../services/Services"
 import Contact from "../contact/Contact"
 import Dashboard from "../dashboard/Dashboard"
+import ProtectedRoute from '../auth/ProtectedRoute';
+import AdminDashboard from '../admin/AdminDashboard';
 
 const Pages = () => {
   return (
@@ -23,6 +25,7 @@ const Pages = () => {
           <Route exact path='/pricing' component={Pricing} />
           <Route exact path='/contact' component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
+          <ProtectedRoute path="/admin/dashboard" component={AdminDashboard} allowedRoles={['admin']} />
         </Switch>
         <Footer />
       </Router>
