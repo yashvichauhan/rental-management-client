@@ -20,6 +20,7 @@ const Navbar = ({ setActiveTab }) => {
             <button onClick={() => handleTabClick('feedback')}>Feedback</button>
             <button onClick={() => handleTabClick('accountManagement')}>Account Management</button>
             <button onClick={() => handleTabClick('addPropertyForm')}>Add Property</button>
+            <button onClick={() => handleTabClick('supportTicketForm')}>Support</button>
         </div>
     );
 };

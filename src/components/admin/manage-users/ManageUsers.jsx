@@ -62,9 +62,13 @@ const ManageUsers = () => {
             <ul>
                 {users.map(user => (
                     <li key={user._id} className="user-item">
-                        {user.fullName} - {user.email} - Role: {user.role}
-                        <button onClick={() => handleEditUser(user)} className="edit-user-button">Edit</button>
-                        <button onClick={() => handleDeleteUser(user._id)} className="delete-user-button">Delete</button>
+                        <div className="user-info">
+                            {user.fullName} - {user.email} - Role: {user.role}
+                        </div>
+                        <div>
+                            <button onClick={() => handleEditUser(user)} className="edit-user-button">Edit</button>
+                            <button onClick={() => handleDeleteUser(user._id)} className="delete-user-button">Delete</button>
+                        </div>
                     </li>
                 ))}
             </ul>

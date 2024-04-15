@@ -1,0 +1,59 @@
+.user-reports {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f4f7fa;
+    border-radius: 8px;
+}
+
+.user-reports h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.report-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.report-card {
+    flex: 0 1 calc(25% - 20px);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.user-reports .report-card h2 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin: 0 0 10px 0;
+}
+
+.user-reports .report-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #16a085;
+    margin: 0;
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .report-cards {
+        flex-direction: column;
+    }
+
+    .report-card {
+        flex-basis: auto;
+    }
+}

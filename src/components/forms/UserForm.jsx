@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axiosInstance from '../../api/axios';
 
 const UserForm = ({ user, setUser, fetchUsers }) => {
     const handleChange = (e) => {
@@ -13,7 +13,7 @@ const UserForm = ({ user, setUser, fetchUsers }) => {
         const method = user._id ? 'put' : 'post';
 
         try {
-            await axios[method](endpoint, user, {
+            await axiosInstance[method](endpoint, user, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

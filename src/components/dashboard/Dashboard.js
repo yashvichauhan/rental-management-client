@@ -7,15 +7,13 @@ import FeedbackForm from './feedback/FeedbackForm';
 import AccountManagement from './account-management/AccountManagement';
 import AddPropertyForm from './add-property/AddPropertyForm';
 import Navbar from './NavBar';
+import SupportTicketForm from '../forms/SupportTicketForm';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('myListings');
     const [user, setUser] = useState(null);
+    const [properties, setProperties] = useState([]);
 
-    const [properties, setProperties] = useState([
-        { id: 1, title: 'Sample Property 1', description: 'Lorem ipsum...', price: 200000, location: 'New York' },
-        { id: 2, title: 'Sample Property 2', description: 'Lorem ipsum...', price: 300000, location: 'Los Angeles' },
-    ]);
     const [activities] = useState([
         { id: 1, timestamp: '2024-04-12 10:00 AM', description: 'Property "Sample Property 1" updated' },
         { id: 2, timestamp: '2024-04-11 02:30 PM', description: 'Property "Sample Property 2" deleted' },
@@ -31,7 +29,6 @@ const Dashboard = () => {
                             Authorization: `Bearer ${token}`
                         }
                     });
-                    console.log(response.data);
                     setUser(response.data);
                 } else {
                     console.log('No token found');
@@ -41,7 +38,25 @@ const Dashboard = () => {
             }
         };
         fetchUser();
-    }, []);
+
+        if (user) {
+            fetchUserProperties(user._id);
+        }
+    }, [user]);
+
+    const fetchUserProperties = async (userId) => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties/user/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            setProperties(response.data);
+        } catch (error) {
+            console.error("Error fetching user properties:", error.response || error);
+        }
+    };
+
 
     // Function to delete a property
     const handleDeleteProperty = id => {
@@ -58,12 +73,12 @@ const Dashboard = () => {
             <Navbar setActiveTab={setActiveTab} />
             <div className="dashboard-content">
                 <h1>{activeTab.replace(/([A-Z])/g, ' $1').trim()}</h1>
-                {/* Conditionally render components based on activeTab */}
                 {activeTab === 'myListings' && <PropertyManagement properties={properties} onDeleteProperty={handleDeleteProperty} />}
                 {activeTab === 'activityLog' && <ActivityLog activities={activities} />}
                 {activeTab === 'feedback' && <FeedbackForm onSubmitFeedback={handleSubmitFeedback} />}
                 {activeTab === 'accountManagement' && <AccountManagement user={user} />}
                 {activeTab === 'addPropertyForm' && <AddPropertyForm user={user} />}
+                {activeTab === 'supportTicketForm' && <SupportTicketForm user={user} />}
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ const PropertyManagement = ({ properties, onDeleteProperty }) => {
             <h3>My Properties</h3>
             {properties.map(property => (
                 <div key={property.id} className="property-item">
-                    <img src={property.imageUrl} alt={property.title} className="property-image" />
+                    <img src={`http://localhost:5000/${property.image.split('\\').join('/')}`} alt={property.title} className="property-image" />
                     <h4>{property.title}</h4>
                     <p>Description: {property.description}</p>
                     <p>Price: ${property.price}</p>
