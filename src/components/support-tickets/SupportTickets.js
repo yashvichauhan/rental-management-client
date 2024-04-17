@@ -69,8 +69,8 @@ const SupportTickets = () => {
                         <span className={`ticket-status ${ticket.status === 'closed' ? 'closed' : ''}`}>Status: {ticket.status}</span>
                     </div>
                     <div className="ticket-body">
-                        <p><strong>User ID:</strong> {ticket.user._id}</p>
-                        <p><strong>User Name:</strong> {ticket.user.fullName}</p>
+                        <p><strong>User ID:</strong> {ticket.user?._id}</p>
+                        <p><strong>User Name:</strong> {ticket.user?.fullName}</p>
                         <p><strong>Description:</strong> {ticket.description}</p>
                         <p><strong>Created At:</strong> {new Date(ticket.createdAt).toLocaleString()}</p>
                         <p><strong>Last Updated:</strong> {new Date(ticket.updatedAt).toLocaleString()}</p>
